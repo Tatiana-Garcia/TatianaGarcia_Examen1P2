@@ -611,7 +611,15 @@ public class Menu extends javax.swing.JFrame {
     }
     private void jb_crudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crudActionPerformed
         bg_main.setVisible(false);
+        this.setVisible(false);
         //COnsola de Ingresar Laptop
+        System.out.println("--CONSOLA--");
+        for (Computadora t : compu) {
+            System.out.println("Posicion: "+compu.indexOf(t)+"->"+t.getHost());
+            System.out.println("-----");
+        }
+        System.out.println("Ingrese la posicion del Host: ");
+        
     }//GEN-LAST:event_jb_crudActionPerformed
 
     private void jb_eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminar1ActionPerformed
