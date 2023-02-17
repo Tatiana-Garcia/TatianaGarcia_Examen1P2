@@ -4,6 +4,7 @@
  */
 package tatianagarcia_examen1p2;
 
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -57,13 +58,14 @@ public class Menu extends javax.swing.JFrame {
         rgb_si = new javax.swing.JRadioButton();
         rgb_no = new javax.swing.JRadioButton();
         bg_escritorio = new javax.swing.JPanel();
-        ALMACEN = new javax.swing.JLabel();
         jt_ram = new javax.swing.JTextField();
         HOST1 = new javax.swing.JLabel();
         jt_almacenimiento = new javax.swing.JTextField();
         HOST4 = new javax.swing.JLabel();
         SSD = new javax.swing.JRadioButton();
         HDD = new javax.swing.JRadioButton();
+        ALMACEN2 = new javax.swing.JLabel();
+        cb_grafica = new javax.swing.JCheckBox();
         bt_add = new javax.swing.JButton();
         btg_PC = new javax.swing.ButtonGroup();
         btg_tipo = new javax.swing.ButtonGroup();
@@ -263,11 +265,6 @@ public class Menu extends javax.swing.JFrame {
         bg_escritorio.setMinimumSize(new java.awt.Dimension(350, 330));
         bg_escritorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ALMACEN.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-        ALMACEN.setForeground(new java.awt.Color(255, 255, 255));
-        ALMACEN.setText("TIpo de almacenimiento:");
-        bg_escritorio.add(ALMACEN, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 180, 50));
-
         jt_ram.setForeground(new java.awt.Color(255, 255, 255));
         bg_escritorio.add(jt_ram, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 200, 30));
 
@@ -285,16 +282,29 @@ public class Menu extends javax.swing.JFrame {
         bg_escritorio.add(HOST4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 140, 50));
 
         SSD.setBackground(new java.awt.Color(0, 0, 0));
+        btg_tipo.add(SSD);
         SSD.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         SSD.setForeground(new java.awt.Color(255, 255, 255));
         SSD.setText("SSD");
         bg_escritorio.add(SSD, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         HDD.setBackground(new java.awt.Color(0, 0, 0));
+        btg_tipo.add(HDD);
         HDD.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         HDD.setForeground(new java.awt.Color(255, 255, 255));
         HDD.setText("HDD");
         bg_escritorio.add(HDD, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
+
+        ALMACEN2.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        ALMACEN2.setForeground(new java.awt.Color(255, 255, 255));
+        ALMACEN2.setText("TIpo de almacenimiento:");
+        bg_escritorio.add(ALMACEN2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 180, 50));
+
+        cb_grafica.setBackground(new java.awt.Color(0, 0, 0));
+        cb_grafica.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        cb_grafica.setForeground(new java.awt.Color(255, 255, 255));
+        cb_grafica.setText("Contiene tarjeta grafica\n");
+        bg_escritorio.add(cb_grafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         bg_agregar.add(bg_escritorio);
         bg_escritorio.setBounds(230, 100, 350, 330);
@@ -461,7 +471,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jb_crudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crudActionPerformed
         bg_main.setVisible(false);
-        //COnsola de Ingresar PC
+        //COnsola de Ingresar Laptop
     }//GEN-LAST:event_jb_crudActionPerformed
 
     private void jb_eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminar1ActionPerformed
@@ -515,6 +525,37 @@ public class Menu extends javax.swing.JFrame {
     private void bt_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_addMouseClicked
         try{
             String host = jt_host.getText();
+            String ip = jt_ip.getText();
+            String mask = jt_mask.getText();
+            
+            if (PC.isSelected()) {
+                int ram = Integer.parseInt(jt_ram.getText());
+                int alm = Integer.parseInt(jt_almacenimiento.getText());
+                String tipo = null;
+                boolean graficos = false;
+                if (SSD.isSelected()) {
+                    tipo = "SSD";
+                }
+                if (HDD.isSelected()) {
+                    tipo = "HHD";
+                }
+                if (cb_grafica.isSelected()) {
+                    graficos = true;
+                }
+                compu.add(new PC(ram, ICONIFIED, tipo, graficos, ip, mask, host));
+            }
+            if (Laptop.isSelected()) {
+                String marca, definicion;
+                boolean rgb = false;
+                marca = jt_marca.getText();
+                definicion = jt_pantalla.getText();
+                if (rgb_si.isSelected()) {
+                    rgb = true;
+                }
+                compu.add(new Laptop(marca, definicion, rgb, ip, mask, host));
+                
+            }
+            
             
         }catch(Exception ex){
             ex.printStackTrace();
@@ -555,10 +596,11 @@ public class Menu extends javax.swing.JFrame {
             }
         });
     }
+    ArrayList<Computadora> compu = new ArrayList();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ALMACEN;
     private javax.swing.JLabel ALMACEN1;
+    private javax.swing.JLabel ALMACEN2;
     private javax.swing.JRadioButton HDD;
     private javax.swing.JLabel HOST;
     private javax.swing.JLabel HOST1;
@@ -579,6 +621,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btg_PC;
     private javax.swing.ButtonGroup btg_rgb;
     private javax.swing.ButtonGroup btg_tipo;
+    private javax.swing.JCheckBox cb_grafica;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

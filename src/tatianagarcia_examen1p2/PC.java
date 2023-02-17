@@ -1,52 +1,63 @@
 
 package tatianagarcia_examen1p2;
 
+import javax.swing.JFormattedTextField;
+import javax.swing.JTextField;
 
 public class PC extends Computadora{
-    private String marca;
-    private String definicion;
-    private boolean rgb;
+    private int ram;
+    private int almacenimiento;
+    private String tipo;
+    private boolean grafica;
 
     public PC() {
         super();
     }
 
-    public PC(String marca, String definicion, boolean rgb, String IP, String Mask, String host) {
+    public PC(int ram, int almacenimiento, String tipo, boolean grafica, String IP, String Mask, String host) {
         super(IP, Mask, host);
-        this.marca = marca;
-        this.definicion = definicion;
-        this.rgb = rgb;
+        this.ram = ram;
+        this.almacenimiento = almacenimiento;
+        this.tipo = tipo;
+        this.grafica = grafica;
     }
 
-    public String getMarca() {
-        return marca;
+    public int getRam() {
+        return ram;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setRam(int ram) {
+        this.ram = ram;
     }
 
-    public String getDefinicion() {
-        return definicion;
+    public int getAlmacenimiento() {
+        return almacenimiento;
     }
 
-    public void setDefinicion(String definicion) {
-        this.definicion = definicion;
+    public void setAlmacenimiento(int almacenimiento) {
+        this.almacenimiento = almacenimiento;
     }
 
-    public boolean isRgb() {
-        return rgb;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setRgb(boolean rgb) {
-        this.rgb = rgb;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public boolean isGrafica() {
+        return grafica;
+    }
+
+    public void setGrafica(boolean grafica) {
+        this.grafica = grafica;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "\nMarca: " + marca + "\nDefinicion: " + definicion + "\nRGB: " + rgb + '}';
+        return super.toString() + "\nRAM: " + ram + "\nAlmacenimiento: " + almacenimiento + "\nTipo: " + tipo + "\nGrafica: " + grafica;
     }
-    
     
     
 }

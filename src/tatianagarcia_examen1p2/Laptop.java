@@ -1,63 +1,52 @@
 
 package tatianagarcia_examen1p2;
 
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
 
 public class Laptop extends Computadora{
-    private int ram;
-    private int almacenimiento;
-    private String tipo;
-    private boolean grafica;
+    private String marca;
+    private String definicion;
+    private boolean rgb;
 
     public Laptop() {
         super();
     }
 
-    public Laptop(int ram, int almacenimiento, String tipo, boolean grafica, String IP, String Mask, String host) {
+    public Laptop(String marca, String definicion, boolean rgb, String IP, String Mask, String host) {
         super(IP, Mask, host);
-        this.ram = ram;
-        this.almacenimiento = almacenimiento;
-        this.tipo = tipo;
-        this.grafica = grafica;
+        this.marca = marca;
+        this.definicion = definicion;
+        this.rgb = rgb;
     }
 
-    public int getRam() {
-        return ram;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setRam(int ram) {
-        this.ram = ram;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public int getAlmacenimiento() {
-        return almacenimiento;
+    public String getDefinicion() {
+        return definicion;
     }
 
-    public void setAlmacenimiento(int almacenimiento) {
-        this.almacenimiento = almacenimiento;
+    public void setDefinicion(String definicion) {
+        this.definicion = definicion;
     }
 
-    public String getTipo() {
-        return tipo;
+    public boolean isRgb() {
+        return rgb;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public boolean isGrafica() {
-        return grafica;
-    }
-
-    public void setGrafica(boolean grafica) {
-        this.grafica = grafica;
+    public void setRgb(boolean rgb) {
+        this.rgb = rgb;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "\nRAM: " + ram + "\nAlmacenimiento: " + almacenimiento + "\nTipo: " + tipo + "\nGrafica: " + grafica;
+        return super.toString() + "\nMarca: " + marca + "\nDefinicion: " + definicion + "\nRGB: " + rgb + '}';
     }
+    
     
     
 }
