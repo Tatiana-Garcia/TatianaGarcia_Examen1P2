@@ -5,40 +5,40 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
 public class Computadora {
-    protected JFormattedTextField IP;
-    protected JFormattedTextField Mask;
-    protected JTextField host;
+    protected String IP;
+    protected String Mask;
+    protected String host;
 
     public Computadora() {
     }
 
-    public Computadora(JFormattedTextField IP, JFormattedTextField Mask, JTextField host) {
+    public Computadora(String IP, String Mask, String host) {
         this.IP = IP;
         this.Mask = Mask;
         this.host = host;
     }
 
-    public JFormattedTextField getIP() {
+    public String getIP() {
         return IP;
     }
 
-    public void setIP(JFormattedTextField IP) {
+    public void setIP(String IP) {
         this.IP = IP;
     }
 
-    public JFormattedTextField getMask() {
+    public String getMask() {
         return Mask;
     }
 
-    public void setMask(JFormattedTextField Mask) {
+    public void setMask(String Mask) {
         this.Mask = Mask;
     }
 
-    public JTextField getHost() {
+    public String getHost() {
         return host;
     }
 
-    public void setHost(JTextField host) {
+    public void setHost(String host) {
         this.host = host;
     }
 

@@ -14,7 +14,7 @@ public class Laptop extends Computadora{
         super();
     }
 
-    public Laptop(int ram, int almacenimiento, String tipo, boolean grafica, JFormattedTextField IP, JFormattedTextField Mask, JTextField host) {
+    public Laptop(int ram, int almacenimiento, String tipo, boolean grafica, String IP, String Mask, String host) {
         super(IP, Mask, host);
         this.ram = ram;
         this.almacenimiento = almacenimiento;

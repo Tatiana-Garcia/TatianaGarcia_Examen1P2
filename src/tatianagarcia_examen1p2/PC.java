@@ -2,7 +2,7 @@
 package tatianagarcia_examen1p2;
 
 
-public class PC {
+public class PC extends Computadora{
     private String marca;
     private String definicion;
     private boolean rgb;
@@ -11,7 +11,8 @@ public class PC {
         super();
     }
 
-    public PC(String marca, String definicion, boolean rgb) {
+    public PC(String marca, String definicion, boolean rgb, String IP, String Mask, String host) {
+        super(IP, Mask, host);
         this.marca = marca;
         this.definicion = definicion;
         this.rgb = rgb;
