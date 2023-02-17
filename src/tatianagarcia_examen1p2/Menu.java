@@ -75,15 +75,15 @@ public class Menu extends javax.swing.JFrame {
         btg_rgb = new javax.swing.ButtonGroup();
         jd_lista = new javax.swing.JDialog();
         bg_listar = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_lista = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
         jd_eliminar = new javax.swing.JDialog();
         bg_listar1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tb_lista1 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         bt_delete = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tb_lista1 = new javax.swing.JTable();
         bg_main = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -236,7 +236,7 @@ public class Menu extends javax.swing.JFrame {
         ALMACEN1.setText("Trae RGB?");
         bg_laptop.add(ALMACEN1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 180, 50));
 
-        jt_marca.setForeground(new java.awt.Color(255, 255, 255));
+        jt_marca.setForeground(new java.awt.Color(0, 0, 0));
         bg_laptop.add(jt_marca, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 200, 30));
 
         HOST3.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
@@ -244,7 +244,7 @@ public class Menu extends javax.swing.JFrame {
         HOST3.setText("Definicion de pantalla: ");
         bg_laptop.add(HOST3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 210, 50));
 
-        jt_pantalla.setForeground(new java.awt.Color(255, 255, 255));
+        jt_pantalla.setForeground(new java.awt.Color(0, 0, 0));
         bg_laptop.add(jt_pantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 200, 30));
 
         HOST5.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
@@ -279,7 +279,7 @@ public class Menu extends javax.swing.JFrame {
         bg_escritorio.setMinimumSize(new java.awt.Dimension(350, 330));
         bg_escritorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jt_ram.setForeground(new java.awt.Color(255, 255, 255));
+        jt_ram.setForeground(new java.awt.Color(0, 0, 0));
         bg_escritorio.add(jt_ram, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 200, 30));
 
         HOST1.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
@@ -287,7 +287,7 @@ public class Menu extends javax.swing.JFrame {
         HOST1.setText("Capacidad de almacenimiento:");
         bg_escritorio.add(HOST1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 210, 50));
 
-        jt_almacenimiento.setForeground(new java.awt.Color(255, 255, 255));
+        jt_almacenimiento.setForeground(new java.awt.Color(0, 0, 0));
         bg_escritorio.add(jt_almacenimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 200, 30));
 
         HOST4.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
@@ -337,14 +337,27 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         bg_agregar.add(bt_add);
-        bt_add.setBounds(230, 440, 90, 30);
+        bt_add.setBounds(230, 430, 90, 30);
 
         jf_agregar.getContentPane().add(bg_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 480));
 
+        jd_lista.setMaximumSize(new java.awt.Dimension(800, 500));
+        jd_lista.setSize(new java.awt.Dimension(700, 480));
         jd_lista.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bg_listar.setBackground(new java.awt.Color(204, 204, 204));
         bg_listar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton2.setBackground(new java.awt.Color(204, 0, 0));
+        jButton2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Salir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        bg_listar.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, -1, -1));
 
         tb_lista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -359,36 +372,13 @@ public class Menu extends javax.swing.JFrame {
 
         bg_listar.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 610, 400));
 
-        jButton2.setBackground(new java.awt.Color(204, 0, 0));
-        jButton2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Salir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        bg_listar.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, -1, -1));
-
         jd_lista.getContentPane().add(bg_listar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 480));
 
+        jd_eliminar.setSize(new java.awt.Dimension(700, 470));
         jd_eliminar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bg_listar1.setBackground(new java.awt.Color(204, 204, 204));
         bg_listar1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tb_lista1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "IP", "Mascara", "Host", "Tipo"
-            }
-        ));
-        tb_lista1.setRowMargin(5);
-        jScrollPane2.setViewportView(tb_lista1);
-
-        bg_listar1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 610, 400));
 
         jButton3.setBackground(new java.awt.Color(204, 0, 0));
         jButton3.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -399,7 +389,7 @@ public class Menu extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        bg_listar1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
+        bg_listar1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
 
         bt_delete.setBackground(new java.awt.Color(0, 0, 204));
         bt_delete.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -415,7 +405,20 @@ public class Menu extends javax.swing.JFrame {
                 bt_deleteActionPerformed(evt);
             }
         });
-        bg_listar1.add(bt_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, -1, -1));
+        bg_listar1.add(bt_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, -1, -1));
+
+        tb_lista1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "IP", "Mascara", "Host", "Tipo"
+            }
+        ));
+        tb_lista1.setRowMargin(5);
+        jScrollPane2.setViewportView(tb_lista1);
+
+        bg_listar1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 610, 400));
 
         jd_eliminar.getContentPane().add(bg_listar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 480));
 
@@ -636,7 +639,7 @@ public class Menu extends javax.swing.JFrame {
         bg_crud.setVisible(false);
         this.setVisible(false);
         bg_laptop.setVisible(false);
-        bg_escritorio.setVisible(true);
+        bg_escritorio.setVisible(false);
         
     }//GEN-LAST:event_jb_agregarActionPerformed
 
@@ -679,7 +682,16 @@ public class Menu extends javax.swing.JFrame {
                 if (cb_grafica.isSelected()) {
                     graficos = true;
                 }
-                compu.add(new PC(ram, ICONIFIED, tipo, graficos, ip, mask, host));
+                compu.add(new PC(ram, alm, tipo, graficos, ip, mask, host));
+                jt_host.setText("");
+                jt_ip.setText("");
+                jt_mask.setText("");
+                PC.setSelected(false);
+                jt_ram.setText("");
+                jt_almacenimiento.setText("");
+                SSD.setSelected(false);
+                HDD.setSelected(false);
+                cb_grafica.setSelected(false);
             }
             if (Laptop.isSelected()) {
                 String marca, definicion;
@@ -690,7 +702,14 @@ public class Menu extends javax.swing.JFrame {
                     rgb = true;
                 }
                 compu.add(new Laptop(marca, definicion, rgb, ip, mask, host));
-                
+                jt_host.setText("");
+                jt_ip.setText("");
+                jt_mask.setText("");
+                Laptop.setSelected(false);
+                jt_marca.setText("");
+                jt_pantalla.setText("");
+                rgb_si.setSelected(false);
+                rgb_no.setSelected(false);
             }
             
             
@@ -735,6 +754,8 @@ public class Menu extends javax.swing.JFrame {
         jd_eliminar.setLocationRelativeTo(null);
         bg_crud.setVisible(false);
         this.setVisible(false);
+        listarTabla();
+        
     }//GEN-LAST:event_jb_eliminarActionPerformed
 
     private void listarTabla(){
