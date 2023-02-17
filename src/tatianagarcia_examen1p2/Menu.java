@@ -6,6 +6,9 @@ package tatianagarcia_examen1p2;
 
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -70,6 +73,17 @@ public class Menu extends javax.swing.JFrame {
         btg_PC = new javax.swing.ButtonGroup();
         btg_tipo = new javax.swing.ButtonGroup();
         btg_rgb = new javax.swing.ButtonGroup();
+        jd_lista = new javax.swing.JDialog();
+        bg_listar = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tb_lista = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jd_eliminar = new javax.swing.JDialog();
+        bg_listar1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tb_lista1 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        bt_delete = new javax.swing.JButton();
         bg_main = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -327,6 +341,84 @@ public class Menu extends javax.swing.JFrame {
 
         jf_agregar.getContentPane().add(bg_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 480));
 
+        jd_lista.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bg_listar.setBackground(new java.awt.Color(204, 204, 204));
+        bg_listar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tb_lista.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "IP", "Mascara", "Host", "Tipo"
+            }
+        ));
+        tb_lista.setRowMargin(5);
+        jScrollPane1.setViewportView(tb_lista);
+
+        bg_listar.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 610, 400));
+
+        jButton2.setBackground(new java.awt.Color(204, 0, 0));
+        jButton2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Salir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        bg_listar.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, -1, -1));
+
+        jd_lista.getContentPane().add(bg_listar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 480));
+
+        jd_eliminar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bg_listar1.setBackground(new java.awt.Color(204, 204, 204));
+        bg_listar1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tb_lista1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "IP", "Mascara", "Host", "Tipo"
+            }
+        ));
+        tb_lista1.setRowMargin(5);
+        jScrollPane2.setViewportView(tb_lista1);
+
+        bg_listar1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 610, 400));
+
+        jButton3.setBackground(new java.awt.Color(204, 0, 0));
+        jButton3.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Salir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        bg_listar1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
+
+        bt_delete.setBackground(new java.awt.Color(0, 0, 204));
+        bt_delete.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        bt_delete.setForeground(new java.awt.Color(255, 255, 255));
+        bt_delete.setText("Eliminar");
+        bt_delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_deleteMouseClicked(evt);
+            }
+        });
+        bt_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_deleteActionPerformed(evt);
+            }
+        });
+        bg_listar1.add(bt_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, -1, -1));
+
+        jd_eliminar.getContentPane().add(bg_listar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 480));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -431,6 +523,11 @@ public class Menu extends javax.swing.JFrame {
         jb_eliminar.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jb_eliminar.setForeground(new java.awt.Color(255, 255, 255));
         jb_eliminar.setText("Eliminar");
+        jb_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_eliminarActionPerformed(evt);
+            }
+        });
         bg_crud.add(jb_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 100, 40));
 
         jb_agregar.setBackground(new java.awt.Color(0, 0, 0));
@@ -466,9 +563,49 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_ingreseActionPerformed
 
     private void jb_listActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_listActionPerformed
-        // TODO add your handling code here:
+        
+        bg_crud.setVisible(false);
+        this.setVisible(false);
+        jd_lista.setVisible(true);
+        jd_lista.setLocationRelativeTo(null);
+        ListarTabla();
+        
+        
     }//GEN-LAST:event_jb_listActionPerformed
 
+    private void ListarTabla(){
+        try {
+
+            //limpiar tabla
+            tb_lista.setModel(new javax.swing.table.DefaultTableModel(
+                    new Object[][]{},
+                    new String[]{
+                        "IP", "Mascara", "Host", "Tipo"
+                    }
+            ));
+            
+            
+
+            // TODO add your handling code here:
+            String cc, n, p, u;
+            for (Computadora t : compu) {
+                Object tipe = null;
+                if (t instanceof Laptop) {
+                    tipe = "Laptop";
+                }
+                if (t instanceof PC) {
+                    tipe = "PC Escritorio";
+                }
+                
+                Object[] row = {t.getIP(), t.getMask(), t.getHost(),tipe};
+                DefaultTableModel modelo = (DefaultTableModel) tb_lista.getModel();
+                modelo.addRow(row); 
+                tb_lista.setModel(modelo);            
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     private void jb_crudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crudActionPerformed
         bg_main.setVisible(false);
         //COnsola de Ingresar Laptop
@@ -562,6 +699,73 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_addMouseClicked
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        bg_crud.setVisible(true);
+        this.setVisible(true);
+        jd_lista.setVisible(false);
+        this.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        bg_crud.setVisible(true);
+        this.setVisible(true);
+        jd_eliminar.setVisible(false);
+        this.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void bt_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_deleteActionPerformed
+
+    private void bt_deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_deleteMouseClicked
+        if (tb_lista1.getSelectedRow() >= 0) {
+            int r = JOptionPane.showConfirmDialog(tb_lista1, "Desea elimnar producto????", "Eliminar producto", YES_NO_OPTION);
+            if (r == 0) {
+                compu.remove(tb_lista1.getSelectedRow());
+                listarTabla();
+                JOptionPane.showMessageDialog(this, "Producto Elimniado exitosamente");
+
+            }
+
+        }
+    }//GEN-LAST:event_bt_deleteMouseClicked
+
+    private void jb_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminarActionPerformed
+        jd_eliminar.setVisible(true);
+        jd_eliminar.setLocationRelativeTo(null);
+        bg_crud.setVisible(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_jb_eliminarActionPerformed
+
+    private void listarTabla(){
+        try {
+
+            //limpiar tabla
+            tb_lista1.setModel(new javax.swing.table.DefaultTableModel(
+                    new Object[][]{},
+                    new String[]{
+                        "IP", "Mascara", "Host", "Tipo"
+                    }
+            ));
+            
+            for (Computadora t : compu) {
+                Object tipe = null;
+                if (t instanceof Laptop) {
+                    tipe = "Laptop";
+                }
+                if (t instanceof PC) {
+                    tipe = "PC Escritorio";
+                }
+                
+                Object[] row = {t.getIP(), t.getMask(), t.getHost(),tipe};
+                DefaultTableModel modelo = (DefaultTableModel) tb_lista1.getModel();
+                modelo.addRow(row); 
+                tb_lista1.setModel(modelo);            
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -616,19 +820,26 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel bg_crud;
     private javax.swing.JPanel bg_escritorio;
     private javax.swing.JPanel bg_laptop;
+    private javax.swing.JPanel bg_listar;
+    private javax.swing.JPanel bg_listar1;
     private javax.swing.JPanel bg_main;
     private javax.swing.JButton bt_add;
+    private javax.swing.JButton bt_delete;
     private javax.swing.ButtonGroup btg_PC;
     private javax.swing.ButtonGroup btg_rgb;
     private javax.swing.ButtonGroup btg_tipo;
     private javax.swing.JCheckBox cb_grafica;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator7;
@@ -639,6 +850,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jb_ingrese;
     private javax.swing.JButton jb_list;
     private javax.swing.JButton jb_modificar;
+    private javax.swing.JDialog jd_eliminar;
+    private javax.swing.JDialog jd_lista;
     private javax.swing.JFrame jf_agregar;
     private javax.swing.JTextField jt_almacenimiento;
     private javax.swing.JTextField jt_host;
@@ -649,6 +862,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jt_ram;
     private javax.swing.JRadioButton rgb_no;
     private javax.swing.JRadioButton rgb_si;
+    private javax.swing.JTable tb_lista;
+    private javax.swing.JTable tb_lista1;
     private javax.swing.JLabel tipo;
     // End of variables declaration//GEN-END:variables
 }
