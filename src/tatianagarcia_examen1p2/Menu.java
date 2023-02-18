@@ -27,6 +27,12 @@ static Scanner DMAF = new Scanner(System.in);
         bg_main.setVisible(true);
         bg_crud.setVisible(false);
         this.setLocationRelativeTo(null);
+        if (compu.isEmpty()) {
+            jb_crud.setVisible(false);
+        }
+        else{
+            jb_crud.setVisible(true);
+        }
     }
 
     /**
@@ -798,7 +804,7 @@ static Scanner DMAF = new Scanner(System.in);
     }//GEN-LAST:event_rgb_noActionPerformed
 
     private void bt_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addActionPerformed
-        // TODO add your handling code here:
+        jb_crud.setVisible(true);
     }//GEN-LAST:event_bt_addActionPerformed
 
     private void bt_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_addMouseClicked
