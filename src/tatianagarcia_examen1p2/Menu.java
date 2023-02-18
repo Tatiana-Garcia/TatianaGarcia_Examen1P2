@@ -107,9 +107,7 @@ static Scanner DMAF = new Scanner(System.in);
         jb_agregar = new javax.swing.JButton();
         jb_eliminar1 = new javax.swing.JButton();
 
-        jf_agregar.setMaximumSize(new java.awt.Dimension(600, 500));
         jf_agregar.setMinimumSize(new java.awt.Dimension(600, 500));
-        jf_agregar.setPreferredSize(new java.awt.Dimension(600, 500));
         jf_agregar.setSize(new java.awt.Dimension(600, 500));
         jf_agregar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -350,7 +348,6 @@ static Scanner DMAF = new Scanner(System.in);
 
         jf_agregar.getContentPane().add(bg_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 480));
 
-        jd_lista.setMaximumSize(new java.awt.Dimension(800, 500));
         jd_lista.setSize(new java.awt.Dimension(700, 480));
         jd_lista.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -529,6 +526,11 @@ static Scanner DMAF = new Scanner(System.in);
         jb_modificar.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jb_modificar.setForeground(new java.awt.Color(255, 255, 255));
         jb_modificar.setText("Modificar");
+        jb_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_modificarActionPerformed(evt);
+            }
+        });
         bg_crud.add(jb_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 190, -1, 40));
 
         jb_eliminar.setBackground(new java.awt.Color(0, 0, 0));
@@ -902,6 +904,10 @@ static Scanner DMAF = new Scanner(System.in);
         listarTabla();
         
     }//GEN-LAST:event_jb_eliminarActionPerformed
+
+    private void jb_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_modificarActionPerformed
+        JOptionPane.showMessageDialog(null, "Ni modo ya no hay tiempo\nEn fin a mimir");
+    }//GEN-LAST:event_jb_modificarActionPerformed
 
     private void listarTabla(){
         try {
