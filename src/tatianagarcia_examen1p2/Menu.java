@@ -5,6 +5,7 @@
 package tatianagarcia_examen1p2;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
@@ -15,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author tatig
  */
 public class Menu extends javax.swing.JFrame {
-
+static Scanner DMAF = new Scanner(System.in);
     /**
      * Creates new form Menu
      */
@@ -612,14 +613,38 @@ public class Menu extends javax.swing.JFrame {
     private void jb_crudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crudActionPerformed
         bg_main.setVisible(false);
         this.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Accediendo a la consola");
         //COnsola de Ingresar Laptop
         System.out.println("--CONSOLA--");
         for (Computadora t : compu) {
             System.out.println("Posicion: "+compu.indexOf(t)+"->"+t.getHost());
             System.out.println("-----");
         }
+        int pos;
         System.out.println("Ingrese la posicion del Host: ");
-        
+        pos = DMAF.nextInt();
+        if(pos>=0 && pos<compu.size()){
+            String ingrese = null; 
+            System.out.print(compu.get(pos).getHost()+"#");
+            try {
+                ingrese = DMAF.next();
+            } catch (Exception e) {
+                System.out.println("String ingresada no valida");
+            }
+            if ("exit".equals(ingrese)) {
+                System.out.println("Accediendo a GUI");
+                bg_main.setVisible(true);
+                this.setVisible(true);
+            }else if ("show".equals(ingrese)){
+                System.out.println("------------");
+                System.out.println(compu.get(pos));
+                System.out.println("------------");
+            }else{
+                //Metodo Binario();
+            } 
+        }else{
+            System.out.println("Posicion no valida");
+        }
     }//GEN-LAST:event_jb_crudActionPerformed
 
     private void jb_eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminar1ActionPerformed
@@ -795,6 +820,19 @@ public class Menu extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
+    
+    private int Binario(int x)
+    {
+        if(x <=1)
+        {
+            return x;
+        }
+        else
+        {
+            return x%2+Binario(x/2)*10;
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
