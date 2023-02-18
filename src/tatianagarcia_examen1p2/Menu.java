@@ -628,20 +628,21 @@ static Scanner DMAF = new Scanner(System.in);
             System.out.print(compu.get(pos).getHost()+"#");
             try {
                 ingrese = DMAF.next();
+                if ("exit".equals(ingrese)) {
+                    System.out.println("Accediendo a GUI");
+                    bg_main.setVisible(true);
+                    this.setVisible(true);
+                }else if ("show".equals(ingrese)){
+                    System.out.println("------------");
+                    System.out.println(compu.get(pos));
+                    System.out.println("------------");
+                }else{
+                    //Metodo Binario();
+                }
             } catch (Exception e) {
                 System.out.println("String ingresada no valida");
             }
-            if ("exit".equals(ingrese)) {
-                System.out.println("Accediendo a GUI");
-                bg_main.setVisible(true);
-                this.setVisible(true);
-            }else if ("show".equals(ingrese)){
-                System.out.println("------------");
-                System.out.println(compu.get(pos));
-                System.out.println("------------");
-            }else{
-                //Metodo Binario();
-            } 
+                 
         }else{
             System.out.println("Posicion no valida");
         }
