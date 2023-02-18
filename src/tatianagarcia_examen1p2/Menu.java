@@ -6,6 +6,8 @@ package tatianagarcia_examen1p2;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
@@ -616,36 +618,139 @@ static Scanner DMAF = new Scanner(System.in);
         JOptionPane.showMessageDialog(null, "Accediendo a la consola");
         //COnsola de Ingresar Laptop
         System.out.println("--CONSOLA--");
-        for (Computadora t : compu) {
-            System.out.println("Posicion: "+compu.indexOf(t)+"->"+t.getHost());
-            System.out.println("-----");
-        }
+        String ingrese = null; 
         int pos;
-        System.out.println("Ingrese la posicion del Host: ");
-        pos = DMAF.nextInt();
-        if(pos>=0 && pos<compu.size()){
-            String ingrese = null; 
-            System.out.print(compu.get(pos).getHost()+"#");
-            try {
-                ingrese = DMAF.next();
-                if ("exit".equals(ingrese)) {
-                    System.out.println("Accediendo a GUI");
-                    bg_main.setVisible(true);
-                    this.setVisible(true);
-                }else if ("show".equals(ingrese)){
-                    System.out.println("------------");
-                    System.out.println(compu.get(pos));
-                    System.out.println("------------");
-                }else{
-                    //Metodo Binario();
-                }
-            } catch (Exception e) {
-                System.out.println("String ingresada no valida");
+        do{
+            for (Computadora t : compu) {
+                System.out.println("Posicion: "+compu.indexOf(t)+"->"+t.getHost());
+                System.out.println("*******");
             }
-                 
-        }else{
-            System.out.println("Posicion no valida");
-        }
+
+            System.out.println("Ingrese la posicion del Host: ");
+            pos = DMAF.nextInt();
+            if(pos>=0 && pos<compu.size()){
+                do{
+                    System.out.print(compu.get(pos).getHost()+"#");
+                    try {
+                        ingrese = DMAF.next();
+                        if ("exit".equals(ingrese)) {
+                            System.out.println("Accediendo a GUI\n");
+                            bg_main.setVisible(true);
+                            this.setVisible(true);
+                        }else if ("show".equals(ingrese)){
+                            System.out.print("------------");
+                            System.out.println(compu.get(pos));
+                            System.out.println("------------\n");
+                        }else{
+                            String cad[] = ingrese.split("_");
+                            String ip2 = cad[1];
+                            boolean valid = true ;
+                            boolean existencia=false;
+                            String ip_host = "", mascara ="";
+                            for (Computadora t : compu) {
+                                if (t.getIP().equals(ip2)) {
+                                    existencia =true;
+                                    ip_host = t.getIP();
+                                    mascara =t.getMask();
+                                }
+                            }
+                            if(existencia ==true){
+                                String[] cadena;
+                                cadena = ip_host.split(".");
+
+                                String[] cadena2;
+                                cadena2 = ip2.split(".");
+                                
+                                String[] mask;
+                                mask = mascara.split(".");
+
+                                for (int i = 0; i < cadena2.length; i++) {
+                                    int val = Integer.parseInt(cadena2[i]);
+                                    int valip = Integer.parseInt(cadena[i]);
+                                    int masc = Integer.parseInt(mask[i]);
+                                    System.out.println("val: "+val);
+                                    if (val>255||val<0||cadena2.length!=4) {
+                                        System.out.println("Ip no valido");
+                                        valid = false;
+                                    }
+                                    else if (cadena2.length<3){
+                                        if (valip != val) {
+                                            valid = false;
+                                        }
+                                    }
+                                    else{
+                                        if (cadena2.length==3) {
+                                            int bin1 = Binario(valip);
+                                            int bin2= Binario(val);
+                                            int binmask = Binario(masc);
+                                            int con = 0;
+                                            
+                                            String binip = Integer.toString(bin1);
+                                            String binip2 = Integer.toString(bin2);
+                                            String binmask2 = Integer.toString(binmask);
+                                            
+                                            for (int j = 0; j < binmask2.length(); j++) {
+                                                char c = binmask2.charAt(j);
+                                                if (c=='1') {
+                                                    con++;
+                                                }
+                                                
+                                            }
+                                            if (binip.length()!=8) {
+                                                int cifra = 8-binip.length();
+                                                for (int j = 0; j < cifra; j++) {
+                                                    binip = 0+binip;
+                                                }
+                                            }
+                                            if (binip2.length()!=8) {
+                                                int cifra = 8-binip2.length();
+                                                for (int j = 0; j < cifra; j++) {
+                                                    binip2 = 0+binip2;
+                                                }
+                                            }
+                                            for (int j = 0; j < con; j++) {
+                                                char a = binip.charAt(j);
+                                                char b = binip2.charAt(j);
+                                                if (a!=b) {
+                                                    valid = false;
+                                                }
+                                            }
+                                            
+                                        }
+                                    }
+                                }
+                                if (valid ==true) {
+                                    System.out.println("\nPinging to "+ip2+" with 32 bits of data: \n"
+                                        + "Reply from "+ip2+": bytes=32 time=37ms TTL=46\n"+"Reply from "+ip2+": bytes=32 time=37ms TTL=46\n"
+                                        + "Reply from "+ip2+": bytes=32 time=37ms TTL=46\n"+"Reply from "+ip2+": bytes=32 time=37ms TTL=46\n"        
+                                        + "Ping statistics for "+ip2+": \n  Packets: Sent = 4, Received = 0, Lost = 4 (100% loss)");
+                                }
+                                if (valid ==false) {
+                                    System.out.println("\nPinging to "+ip2+" with 32 bits of data: \n"
+                                        + "Reply from "+ip2+": Destination host unreachable\n"+"Reply from "+ip2+": Destination host unreachable\n"
+                                        + "Reply from "+ip2+": Destination host unreachable\n"+"Reply from "+ip2+": Destination host unreachable\n"        
+                                        + "Ping statistics for "+ip2+": \n  Packets: Sent = 4, Received = 0, Lost = 4 (100% loss)");
+                                }
+                                
+                            }else{
+                                System.out.println("\nPinging to "+ip2+" with 32 bits of data: \n"
+                                        + "Request time\nRequest time\nRequest time\nRequest time\n\n"
+                                        + "Ping statistics for "+ip2+": \n  Packets: Sent = 4, Received = 0, Lost = 4 (100% loss)");
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("String ingresada no valida");
+                    }
+                }while(!"exit".equals(ingrese));
+
+            }else{
+                System.out.println("Posicion no valida");
+            }
+        }while(pos<0||pos>compu.size());
+        
+                
+        
+            
     }//GEN-LAST:event_jb_crudActionPerformed
 
     private void jb_eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminar1ActionPerformed
@@ -868,6 +973,24 @@ static Scanner DMAF = new Scanner(System.in);
             }
         });
     }
+    
+    boolean valid;
+//    Pattern patron = Pattern.compile("ping_[0-255]{1}.[0-255]{1}.[0-255]{1}.[0-255]{1}");
+//    Matcher mat = patron.matcher(ingrese);
+//    //String patron = "ping_[0-255]{1}.[0-255]{1}.[0-255]{1}.[0-255]{1}";
+//    if(mat.matches()){
+//        System.out.println("Es valido");
+//    }
+////                            if (ingrese.matches(patron)) {
+////                                valid = true;
+////                                System.out.println("Es valido");
+////                            }
+//    else{
+//        System.out.println("No es valido");
+//    }
+//    Metodo Binario();
+    
+    
     ArrayList<Computadora> compu = new ArrayList();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
